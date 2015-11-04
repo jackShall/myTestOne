@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <script type="text/javascript" src="../myTestOne/jquery-1.3.1.js"></script>
+    <title></title>
+    <style>
+        #menu{width:300px;}
+        .has_children{background: #555;
+            color: #fff;cursor: pointer;}
+        .highlight{color:#fff;background-color: green;}
+        div{padding: 0;margin: 10px 0;}
+        div a {background:#888;display:none;float: left;width: 300px;}
+    </style>
+</head>
+<body>
+  <div id="menu">
+      <div class="has_children">
+          <span>第一章认识JQuery</span>
+          <a>1.1-javaScript</a>
+          <a>1.1-javaScript</a>
+          <a>1.1-javaScript</a>
+          <a>1.1-javaScript</a>
+          <a>1.1-javaScript</a>
+          <a>1.1-javaScript</a>
+          <a>1.1-javaScript</a>
+      </div>
+      <div class="has_children">
+          <span>第二章认识JQuery</span>
+          <a>2.1选择器是什么</a>
+          <a>2.1选择器是什么</a>
+          <a>2.1选择器是什么</a>
+          <a>2.1选择器是什么</a>
+          <a>2.1选择器是什么</a>
+          <a>2.1选择器是什么</a>
+      </div>
+      <div class="has_children">
+          <span>第三章认识JQuery</span>
+          <a>3.1DOM操作的分类</a>
+          <a>3.1DOM操作的分类</a>
+          <a>3.1DOM操作的分类</a>
+          <a>3.1DOM操作的分类</a>
+          <a>3.1DOM操作的分类</a>
+          <a>3.1DOM操作的分类</a>
+          <a>3.1DOM操作的分类</a>
+      </div>
+      <button id="btn">我是一个测试按钮</button>
+  </div>
+  <script>
+      $(".has_children").click(function(){
+          $(this).addClass("highlight")
+                  .children("a").show().end()
+                  .siblings()
+                  .removeClass("highlight")
+                  .children("a").hide();
+      })
+      $("#btn").click(function(){
+          alert("这是一个测试按钮！");
+      })
+      $("#btn").trigger("click");
+  </script>
+</body>
+</html>
