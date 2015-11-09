@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function rangeTest(){
+        var html;
+        var showRangeDiv = document.getElementById("showRange");
+        var selection = document.getSelection();
+        if(selection.rangeCount>0){
+            html = "您选取了>"+selection.rangeCount+"<内容<br/>";
+            for(var i=0;i<selection.rangeCount;i++){
+                var range =selection.getRangeAt(i);
+                html+="第"+(i+1)+"段内容为："+range+"<br/>";
+            }
+            showRangeDiv.innerHTML=html;
+        }
+    }
+    function deleteRangeContent(onlyContent){
+        var div = document.getElementById("div");
+        var rangeObj = document.createRange();
+        if(onlyContent){
+            rangeObj.selectNodeContents(div);
+            rangeObj.deleteContents();
+        }else{
+            rangeObj.selectNode(div);
+            rangeObj.deleteContents();
+        }
+    }
+</script>
+Selection对象与Range对象的使用
+<input type="button" value="点击我" onclick="rangeTest()">
+<div id="showRange"></div>
+<div id="div" style="background-color: #e0a0b0;width: 300px;height: 500px">
+    元素中的内容
+</div>
+<button onclick="deleteRangeContent(true)">删除内容</button>
+<button onclick="deleteRangeContent(false)">删除元素</button>
+</body>
+</html>
